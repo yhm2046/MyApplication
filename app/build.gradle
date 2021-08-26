@@ -1,15 +1,15 @@
 plugins {
     id 'com.android.application'
 }
-
+//最小sdk 27，android8.1,运行最小29.0.2
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdkVersion 27
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 

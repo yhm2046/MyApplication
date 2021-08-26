@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
     private String TAG="MainActivity:xwg";
 
@@ -12,26 +14,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i(TAG,"lcm(100,15)="+lcm(100,15));
-        Log.i(TAG,"gcb(100,15)="+gcb(100,15));
+       String str="4d442e2e";
+       byte[] array=AdanGPS.hexStringToByteArray(str);
+       Log.i(TAG, "array:"+Arrays.toString(array));  //AB:-85,cc:-52
+        byte[]array2={11,23,55,67};
+        AdanGPS.dHex("xwg:array2",array2,array2.length);
+        Log.i(TAG,"check:"+AdanGPS.getCheckSum(array));
 
+
+        Log.i(TAG,"a:"+AdanGPS.getCheckSum(new byte[]{0x22,0x11,0x11,0x32}));
+        Log.i(TAG,"b:"+AdanGPS.getCheckSum(new byte[]{0x22,0x11,0x11,0x32}));
+        Log.i(TAG,"c:"+AdanGPS.getCheckSum(new byte[]{2,2,4,4,1,2}));
+
+        String hex="3444343432453245303030373030303630303031333030313030303130313338";
+        Log.i(TAG,"hex len:"+hex.length());
     }
-    //最小公倍数:lest common multiple
-    public static int lcm(int p,int q){
-       /* calculation process
-        int r=gcb(p,q);
-        return r*(p/r)*(q/r);
-        */
-        return p*q/gcb(p,q);    //simple version
-    }
-    //最大公约数:greatest common divisor
-    public static int gcb(int p,int q){
-       /*calculation process
-       if(q==0)
-            return p;
-        int r=p%q;
-        return gcb(q,r);
-        */
-        return (p%q==0)?q:gcb(q,p%q); //simple version
-    }
+
 }

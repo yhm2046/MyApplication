@@ -41,11 +41,14 @@ public class HandleThreadActivity extends AppCompatActivity {
                     case 1:
                         Log.i(TAG,"btn1 send...");
 //                        tvShow.setText("btn1 click"); //不能更新ui否则报错
+//                        what写1就一直循环，每2s执行
+                        handler.sendEmptyMessageDelayed(1,2000);
                         break;
                     case 2:
                         Log.i(TAG,"btn2 send...");
 //                        tvShow.setText("btn2 click");
                         break;
+                    default: Log.i(TAG,"0 send...");
                 }
             }
         };

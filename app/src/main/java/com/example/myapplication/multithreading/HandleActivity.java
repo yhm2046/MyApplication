@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.multithreading;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.myapplication.R;
 
 /**
  * Handle test

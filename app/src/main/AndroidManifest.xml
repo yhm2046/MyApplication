@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".HandleActivity"
+            android:name=".multithreading.HandleActivity"
             android:exported="true" >
+
+        </activity>
+        <activity android:name=".multithreading.HandleThreadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

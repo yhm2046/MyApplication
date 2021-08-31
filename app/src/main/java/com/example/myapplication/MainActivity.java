@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
        String string2=Integer.toHexString((0x23&0xff));
 //        Log.i(TAG,"0x2300|0x30:"+Integer.toHexString((0x2300|0x30)));
 //        String hex="4D 44 2E 2E 02 8F 00 06 02 62 30 01 00 03 24 47 50 47 47 41 2C 31 32 32 32 31 32 2E 30 30 2C 32 32 33 36 2E 31 39 36 32 37 31 2C 4E 2C 31 31 33 35 30 2E 35 38 33 36 30 38 2C 45 2C 31 2C 30 38 2C 31 2E 30 2C 2D 33 32 2E 34 2C 4D 2C 2D 32 2E 30 2C 4D 2C 2C 2A 36 42 0D 0A 24 47 50 52 4D 43 2C 31 32 32 32 31 32 2E 30 30 2C 41 2C 32 32 33 36 2E 31 39 36 32 37 31 2C 4E 2C 31 31 33 35 30 2E 35 38 33 36 30 38 2C 45 2C 30 2E 30 2C 2C 31 39 30 38 32 31 2C 32 2E 32 2C 57 2C 41 2A 30 33 0D 0A 24 47 50 47 53 56 2C 33 2C 31 2C 31 31 2C 31 30 2C 38 32 2C 31 38 30 2C 33 38 2C 31 32 2C 32 38 2C 30 35 33 2C 33 31 2C 32 33 2C 34 35 2C 31 34 39 2C 33 32 2C 32 35 2C 35 34 2C 30 38 34 2C 32 34 2A 37 45 0D 0A 24 47 50 47 53 56 2C 33 2C 32 2C 31 31 2C 32 36 2C 31 30 2C 32 30 31 2C 31 38 2C 33 31 2C 34 30 2C 32 35 38 2C 32 33 2C 33 32 2C 34 36 2C 33 34 35 2C 33 37 2C 31 38 2C 30 33 2C 31 37 34 2C 2A 37 32 0D 0A 24 47 50 47 53 56 2C 33 2C 33 2C 31 31 2C 32 31 2C 30 33 2C 33 30 32 2C 2C 32 34 2C 30 30 2C 30 30 30 2C 2C 32 39 2C 30 31 2C 31 33 33 2C 2A 34 35 0D 0A 24 50 51 47 53 56 2C 34 2C 31 2C 31 35 2C 30 31 2C 34 35 2C 31 32 32 2C 32 37 2C 30 32 2C 34 36 2C 32 33 36 2C 32 39 2C 30 33 2C 36 31 2C 31 38 38 2C 32 37 2C 30 34 2C 33 30 2C 31 31 31 2C 32 37 2A 36 35 0D 0A 24 50 51 47 53 56 2C 34 2C 32 2C 31 35 2C 30 35 2C 32 33 2C 32 35 35 2C 32 39 2C 30 36 2C 35 31 2C 33 34 33 2C 32 32 2C 30 39 2C 34 35 2C 33 31 37 2C 32 30 2C 31 30 2C 32 36 2C 31 38 34 2C 31 31 2A 36 31 0D 0A 24 50 51 47 53 56 2C 34 2C 33 2C 31 35 2C 31 33 2C 34 32 2C 32 32 30 2C 32 36 2C 31 36 2C 35 31 2C 33 35 31 2C 31 36 2C 31 39 2C 36 38 2C 30 30 34 2C 32 36 2C 32 30 2C 34 35 2C 31 31 33 2C 32 32 2A 36 39 0D 0A 24 50 51 47 53 56 2C 34 2C 34 2C 31 35 2C 30 37 2C 33 35 2C 31 36 31 2C 2C 30 38 2C 32 38 2C 31 39 31 2C 2C 32 32 2C 32 30 2C 33 32 32 2C 2A 35 36 0D 0A 24 47 50 47 53 41 2C 41 2C 33 2C 31 30 2C 31 32 2C 32 33 2C 32 35 2C 33 31 2C 33 32 2C 2C 2C 2C 2C 2C 2C 31 2E 33 2C 31 2E 30 2C 30 2E 39 2A 33 46 0D 0A 89";
@@ -24,12 +24,8 @@ public class MainActivity extends AppCompatActivity {
 //        String hex2="";
 //        Log.i(TAG,"hex2 leng:"+hex2.length());
 //        AdanGPS.decodeMsg(hex2);
-
-
-        showTimeNow();
+        String timenow=showTimeNow();
+        Log.i(TAG,"time now:"+timenow);
     }
-
-
-
 
 }

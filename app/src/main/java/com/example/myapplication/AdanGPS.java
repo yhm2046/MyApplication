@@ -10,6 +10,15 @@ import java.util.Arrays;
  */
 public class AdanGPS {
     private static final String TAG="AdanGPS:xwg";
+
+    /**
+     * 移除校验码
+     * @param string
+     * @return
+     */
+    public static String removeCheckSum(String string){
+        return string.substring(0,string.length() - 2);
+    }
     public static void decodeMsg(String msg) {
         if (!msg.startsWith("4D442E2E")) {
             Log.i(TAG,"not start with 4D442E2E");
@@ -102,6 +111,6 @@ public class AdanGPS {
             sb.append((stmp.length() == 1) ? "0" + stmp : stmp);
             sb.append(" ");
         }
-        Log.d(tag, sb.toString().toUpperCase().trim());
+        Log.i(tag, sb.toString().toUpperCase().trim());
     }
 }

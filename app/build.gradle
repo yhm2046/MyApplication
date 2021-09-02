@@ -4,7 +4,7 @@ plugins {
 //最小sdk 27，android8.1,运行最小29.0.2
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "28"
 
     defaultConfig {
         applicationId "com.example.myapplication"

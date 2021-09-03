@@ -26,11 +26,11 @@ public class IOUtils {
     static public boolean writeSDCardInfo(String content,String filePath){
         if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
             return false;
-//        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
-//                +"/info.txt");
         File file = new File(filePath);
         try {
-            FileOutputStream fos = new FileOutputStream(file);
+            FileOutputStream fos = new FileOutputStream(file,true);
+            //以追加而非覆盖方式写入，若覆盖写入为new FileOutputStream(file)
+//            reference:https://www.cnblogs.com/renhui/p/8656586.html
             fos.write(content.getBytes());
             fos.flush();
             fos.close();

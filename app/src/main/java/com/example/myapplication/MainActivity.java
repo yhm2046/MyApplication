@@ -30,20 +30,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"write");
-//                 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-//    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
                 PermissionUtils.RequestPermissions(MainActivity.this,
                         Manifest.permission.READ_EXTERNAL_STORAGE);
                 PermissionUtils.RequestPermissions(MainActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 String filePath=Environment.getExternalStorageDirectory().getAbsolutePath()
                         +"/gps/gps.txt";
-//                String result=IOUtils.getSDCardString(filePath);
+//                写入文件测试
                 Log.i(TAG,"filePath:"+filePath);
-                if(IOUtils.writeSDCardInfo("azj2",filePath)){
+                if(IOUtils.writeSDCardInfo("\n{1,2,3,4,5}",filePath)){
                     Log.i(TAG,"write success");
                 }
                 else{Log.i(TAG,"write fail!");};
+//                读取文件测试
+                String str=IOUtils.getSDCardString(filePath);
+                Log.i(TAG,"str:"+filePath);
+                Log.i(TAG,"read file:"+str);
             }//end onclick
         });
     }

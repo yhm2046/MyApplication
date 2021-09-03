@@ -42,15 +42,13 @@ public class IOUtils {
         }
     }
     /**
-     * 向sdcard中写入数据
-     * @param filePath  写入的完整路径：storage/emulated/0/gps/test.txt
-     * @return  获取的字符串
+     * 从sdcard中读数据
+     * @param filePath  读文件的完整路径：storage/emulated/0/gps/test.txt
+     * @return  获取的字符串，有输出string，无返回null
      */
     static public String getSDCardString(String filePath){
         if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
             return null;
-//        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
-//                +"/info.txt");  //打开要读的文件
         File file = new File(filePath);
         if(!file.exists())        //文件不存在的情况下
         {
@@ -59,11 +57,12 @@ public class IOUtils {
         }
         try {
             FileInputStream fis = new FileInputStream(file);
-            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+//            加速获取多行数据：
+//            https://stackoverflow.com/questions/5172284/faster-way-than-scanner-or-bufferedreader-reading-multiline-data-from-stdin
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis),32*1024*1024);
             StringBuilder sb = new StringBuilder();
-            String line = null;
-            while((line=br.readLine())!=null)        //获取每一行数据源
-            {
+            while (br.ready()) {
+                String line = br.readLine();
                 sb.append(line+"\r\n");
             }
             return sb.toString();

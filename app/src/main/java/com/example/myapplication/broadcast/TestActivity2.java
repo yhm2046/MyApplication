@@ -16,21 +16,24 @@ import com.example.myapplication.R;
  * 动态播例子
  */
 public class TestActivity2 extends AppCompatActivity {
-//    private static final String ACTION1="com.abc";
-    private static final String ACTION2="com.xyz";
+
     private String TAG="TestActivity:xwg";
     Button btn;
     BroadcastReceiverGPS broadcastGPS=null;
     IntentFilter intentFilter=null;
+    Intent serviceGPS=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_broadcast);
         Log.i(TAG,"动态广播--------------");
         intentFilter=new IntentFilter();
-        intentFilter.addAction(ACTION2);
+        intentFilter.addAction(ConstantGPS.ACTION_GPS2);
         broadcastGPS=new BroadcastReceiverGPS();
         registerReceiver(broadcastGPS,intentFilter);
+//        启动服务
+        serviceGPS=new Intent(this,ServiceGPS.class);
+        startService(serviceGPS);
         btn=(Button) findViewById(R.id.btn_send_broadcast);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,5 +54,6 @@ public class TestActivity2 extends AppCompatActivity {
             unregisterReceiver(broadcastGPS);
             broadcastGPS=null;
         }
+        if (serviceGPS!=null){stopService(serviceGPS);}
     }
 }

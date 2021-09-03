@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <service android:name=".broadcast.ServiceGPS"
+            android:enabled="true"
+            android:exported="true"></service>
         <receiver android:name=".broadcast.BroadcastReceiverGPS"
             android:enabled="true"
             android:exported="true">

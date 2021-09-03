@@ -20,14 +20,16 @@
                 <action android:name="com.abc"/>
             </intent-filter>
         </receiver>
-        <activity
-            android:name=".TestActivity"
-            android:exported="true" >
+        <activity android:name=".broadcast.TestActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".broadcast.TestActivity"
+            android:exported="true" >
+
         </activity>
         <activity
             android:name=".multithreading.HandleActivity"

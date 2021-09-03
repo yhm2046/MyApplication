@@ -10,11 +10,20 @@ import android.util.Log;
  * gps broadcast receiver
  */
 public class BroadcastReceiverGPS extends BroadcastReceiver {
-    private String TAG="BroadcastGPS:xwg";
+    private static String TAG="BroadcastGPS:xwg";
+    private static final String ACTION1="com.abc";
+    private static final String ACTION2="com.xyz";
     @Override
     public void onReceive(Context context, Intent intent) {
-        if(intent.getAction().equals("com.abc")){
-            Log.i(TAG,"reciver the broadcase...");
+        String acion=intent.getAction().toString();
+        switch (acion){
+            case ACTION1:
+                Log.i(TAG,"reciver the abc...");
+                break;
+            case ACTION2:
+                Log.i(TAG,"reciver the xyz...");
+                break;
+            default:
         }
     }
 }

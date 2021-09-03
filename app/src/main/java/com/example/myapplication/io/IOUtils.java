@@ -6,6 +6,7 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -15,6 +16,31 @@ import java.io.InputStreamReader;
 public class IOUtils {
     static final String TAG="IOUtils:azj";
 
+    /**
+     * reference:https://cloud.tencent.com/developer/article/1582237
+     * read text from sdcard
+     * @param content   写入内容
+     * @param filePath 文件完整路径
+     * @return  写入成功true，否则false
+     */
+    static public boolean writeSDCardInfo(String content,String filePath){
+        if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+            return false;
+//        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+//                +"/info.txt");
+        File file = new File(filePath);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(content.getBytes());
+            fos.flush();
+            fos.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i(TAG,"writeSDCardInfo exception:"+e.toString());
+            return false;
+        }
+    }
     /**
      * 向sdcard中写入数据
      * @param filePath  写入的完整路径：storage/emulated/0/gps/test.txt

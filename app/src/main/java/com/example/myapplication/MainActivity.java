@@ -37,6 +37,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.io.IOUtils;
+import com.example.myapplication.io.StringUtils;
+import com.example.myapplication.io.SvStatusArrays;
 import com.example.myapplication.permission.PermissionUtils;
 
 import java.io.File;
@@ -46,7 +48,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import static com.example.myapplication.TimeUtils.showTimeNow;
 
@@ -57,32 +61,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i(TAG,"MainActivity--------------");
-//       read text from sdcard: sdcard/gps/test.txt, storage/emulated/0/gps/test.txt
         btnShow=(Button) findViewById(R.id.btn_show);
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"write");
-                PermissionUtils.RequestPermissions(MainActivity.this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE);
-                PermissionUtils.RequestPermissions(MainActivity.this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
+/*
+* $PQGSV,4,1,16,01,45,122,38,02,47,237,32,03,63,188,32,09,56,248,25*64
 
-                String filePath=Environment.getExternalStorageDirectory().getAbsolutePath()
-                        +"/gps/gps.txt";
-//                写入文件测试
-                Log.i(TAG,"filePath:"+filePath);
-                if(IOUtils.writeSDCardInfo("\n{1,2,3,4,5}",filePath)){
-                    Log.i(TAG,"write success");
-                }
-                else{Log.i(TAG,"write fail!");};
-//                读取文件测试
-                String str=IOUtils.getSDCardString(filePath);
-                Log.i(TAG,"str:"+filePath);
-                Log.i(TAG,"read file:"+str);
+
+解析以上string，转换为
+b[]={} 卫星号
+b1[]={} 卫星类型
+b2[]={} 可用卫星
+d[]={} 信噪比
+d[]={} 海拔
+e[]={} 方位角
+f[]={} 载波频率
+//* */
+
             }//end onclick
-        });
-    }
+        });//end button
+        String str="$PQGSV,4,4,16,07,07,181,,08,82,061,,10,05,191,,13,74,337,*6E";
+        String s2="$GPGSV,3,3,09,32,08,251,*4F";
+        String []result= StringUtils.splitArrays(str);
+        Log.i(TAG,"02:"+Integer.parseInt("02"));
+        Log.i(TAG,"len:"+result.length+",result[]:"+Arrays.toString(result));
+//                生成7个数组
+        SvStatusArrays svStatusArrays=StringUtils.getSvStatusArrays(result);
+
+    }//end oncreate
 
 }

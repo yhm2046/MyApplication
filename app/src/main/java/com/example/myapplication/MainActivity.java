@@ -7,9 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.nio.IntBuffer;
 import java.util.Arrays;
 
-import static com.example.myapplication.io.StringUtils.getIntArraysSum;
+import static com.example.myapplication.io.StringUtils.getFloatArraysSumImprove;
+import static com.example.myapplication.io.StringUtils.getIntArraysSumImprove;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG="MainActivity:xwg";
@@ -27,10 +29,15 @@ public class MainActivity extends AppCompatActivity {
             }//end onclick
         });//end button
         int a[]={1,2,3};
-        int b[]={7,8,9};
-        Log.i(TAG,"c[]:"+Arrays.toString(getIntArraysSum(a,b)));
-
+        int b[]={1,2,3};
+        float[] f1= {4.0f, 5f, 6f};
+        float[] f2= {7,8,9};
+        int[] sum = getIntArraysSumImprove(a,b);
+        float[] s2=getFloatArraysSumImprove(f1,f2);
+        Log.i(TAG,"sum[]:"+Arrays.toString(sum));
+        Log.i(TAG,"s2:"+Arrays.toString(s2));
     }//end oncreate
+
 
 
 

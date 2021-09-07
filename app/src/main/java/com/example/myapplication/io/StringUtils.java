@@ -2,6 +2,8 @@ package com.example.myapplication.io;
 
 import android.util.Log;
 
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.util.Arrays;
 
 /**
@@ -9,6 +11,36 @@ import java.util.Arrays;
  */
 public class StringUtils {
     private static final String TAG="StringUtils:xwg";
+
+    /**
+     * 合并两个int数组
+     * @param a float[]
+     * @param b float[]
+     * @return float[]
+     */
+    public static float[] getFloatArraysSumImprove(float a[],float b[]) {
+        if(a==null||b==null) return null;
+        FloatBuffer floatBuffer = FloatBuffer.allocate(a.length+b.length);
+        floatBuffer.put(a);
+        floatBuffer.put(b);
+        float sum[]=floatBuffer.array();
+        return sum;
+    }
+
+    /**
+     * 合并两个int数组
+     * @param a int[]
+     * @param b int[]
+     * @return int[]
+     */
+    public static int[] getIntArraysSumImprove(int a[],int b[]) {
+        if(a==null||b==null) return null;
+        IntBuffer intBuffer = IntBuffer.allocate(a.length+b.length);
+        intBuffer.put(a);
+        intBuffer.put(b);
+        int sum[]=intBuffer.array();
+        return sum;
+    }
 
     /**
      * 合并两个int数组,2021.9.7

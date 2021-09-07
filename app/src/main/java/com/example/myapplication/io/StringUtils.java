@@ -13,13 +13,15 @@ public class StringUtils {
     private static final String TAG="StringUtils:xwg";
 
     /**
-     * 合并两个int数组
+     * 合并两个float数组
      * @param a float[]
      * @param b float[]
      * @return float[]
      */
     public static float[] getFloatArraysSumImprove(float a[],float b[]) {
-        if(a==null||b==null) return null;
+        if(a==null&&b!=null) return b;
+        if(a!=null&&b==null) return a;
+        if(a==null&&b==null) return null;
         FloatBuffer floatBuffer = FloatBuffer.allocate(a.length+b.length);
         floatBuffer.put(a);
         floatBuffer.put(b);
@@ -34,7 +36,9 @@ public class StringUtils {
      * @return int[]
      */
     public static int[] getIntArraysSumImprove(int a[],int b[]) {
-        if(a==null||b==null) return null;
+        if(a==null&&b!=null) return b;
+        if(a!=null&&b==null) return a;
+        if(a==null&&b==null) return null;
         IntBuffer intBuffer = IntBuffer.allocate(a.length+b.length);
         intBuffer.put(a);
         intBuffer.put(b);

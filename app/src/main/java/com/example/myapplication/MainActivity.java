@@ -29,13 +29,15 @@ public class MainActivity extends AppCompatActivity {
             }//end onclick
         });//end button
         int a[]={1,2,3};
-        int b[]={1,2,3};
-        float[] f1= {4.0f, 5f, 6f};
-        float[] f2= {7,8,9};
+        int b[]=null;
+        float[] f1= null;
+        float[] f2= null;
         int[] sum = getIntArraysSumImprove(a,b);
         float[] s2=getFloatArraysSumImprove(f1,f2);
-        Log.i(TAG,"sum[]:"+Arrays.toString(sum));
-        Log.i(TAG,"s2:"+Arrays.toString(s2));
+        if(sum==null) Log.i(TAG,"sum==null");
+        else Log.i(TAG,"sum[]:"+Arrays.toString(sum));
+        if(s2==null) Log.i(TAG,"s2==null");
+        else Log.i(TAG,"s2:"+Arrays.toString(s2));
     }//end oncreate
 
 

@@ -37,7 +37,8 @@ public class StringUtils {
             for(int i=8,j=0;i<result.length;i+=4,j++){
                 Log.i(TAG,"id:"+result[i]);
                 b[j]=Integer.valueOf(result[i]).intValue();
-                b1[j]=0;    //卫星类型
+                if(result[0].indexOf("$PQGSV")!=-1) b1[j]=5;
+                else b1[j]=1;//卫星类型，beidou:5,gps:1
                 b2[j]=Integer.valueOf(result[3]).intValue();
                 if(result[i+3]==null||result[i+3].equals("")) c[j]=0;//信噪比
                 else    c[j]=Float.valueOf(result[i+3]).floatValue();
@@ -71,7 +72,7 @@ public class StringUtils {
         String[] str1 = source.split(",");
 //        Log.i(TAG,"1.lenth:"+str1.length+",str1[]:"+ Arrays.toString(str1));
         for(int i=0;i<str1.length;i++){
-            if(str1[i].indexOf('*')!=-1){
+            if(str1[i].indexOf('*')!=-1){   //包含*
                 String []tmp=str1[i].split("\\*");
                 str1[i]=tmp[0];
             }

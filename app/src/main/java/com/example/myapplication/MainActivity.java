@@ -82,10 +82,13 @@ f[]={} 载波频率
 
             }//end onclick
         });//end button
-        String str="$PQGSV,4,4,16,07,07,181,,08,82,061,,10,05,191,,13,74,337,*6E";
+        String str="$PQGSV,1,1,0,*73";
         String s2="$GPGSV,3,3,09,32,08,251,*4F";
+
         String []result= StringUtils.splitArrays(str);
-        Log.i(TAG,"02:"+Integer.parseInt("02"));
+        
+        if(result.length>=8) Log.i(TAG,"useful");
+        else Log.i(TAG,"unuseful");
         Log.i(TAG,"len:"+result.length+",result[]:"+Arrays.toString(result));
 //                生成7个数组
         SvStatusArrays svStatusArrays=StringUtils.getSvStatusArrays(result);

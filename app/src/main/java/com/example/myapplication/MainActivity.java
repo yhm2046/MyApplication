@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 import static com.example.myapplication.io.StringUtils.getFloatArraysSumImprove;
 import static com.example.myapplication.io.StringUtils.getIntArraysSumImprove;
+import static com.example.myapplication.io.StringUtils.getStringArraysSumImprove;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG="MainActivity:xwg";
@@ -28,16 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
             }//end onclick
         });//end button
-        int a[]={1,2,3};
-        int b[]=null;
-        float[] f1= null;
-        float[] f2= null;
-        int[] sum = getIntArraysSumImprove(a,b);
-        float[] s2=getFloatArraysSumImprove(f1,f2);
-        if(sum==null) Log.i(TAG,"sum==null");
-        else Log.i(TAG,"sum[]:"+Arrays.toString(sum));
-        if(s2==null) Log.i(TAG,"s2==null");
-        else Log.i(TAG,"s2:"+Arrays.toString(s2));
+        String []s1=null;
+        String []s2=null;
+        String []s3=getStringArraysSumImprove(s1,s2);
+        if(s3==null) Log.i(TAG,"s3 is null");
+        else Log.i(TAG,"s3:"+Arrays.toString(s3));
     }//end oncreate
 
 

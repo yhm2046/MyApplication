@@ -4,13 +4,33 @@ import android.util.Log;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 字符串工具类，2021.9.5  Sunday
  */
 public class StringUtils {
     private static final String TAG="StringUtils:xwg";
+
+
+    /**
+     * 合并两个float数组
+     * @param a float[]
+     * @param b float[]
+     * @return float[]
+     */
+    public static String[] getStringArraysSumImprove(String a[],String b[]) {
+        if(a==null&&b!=null) return b;
+        if(a!=null&&b==null) return a;
+        if(a==null&&b==null) return null;
+        int alen=a.length;
+        int blen=b.length;
+        a=Arrays.copyOf(a,alen+blen);
+        System.arraycopy(b,0,a,alen,blen);
+        return a;
+    }
 
     /**
      * 合并两个float数组

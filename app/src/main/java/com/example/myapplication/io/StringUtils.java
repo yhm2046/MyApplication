@@ -11,6 +11,25 @@ public class StringUtils {
     private static final String TAG="StringUtils:xwg";
 
     /**
+     * 合并两个int数组,2021.9.7
+     * @param array1    int[]
+     * @param array2    int[]
+     * @return  int[]
+     */
+    public static int[] getIntArraysSum(int array1[],int array2[]) {
+        int c[]=new int[array1.length+array2.length];
+        if (c.length==0) return null;
+        for(int i=0;i<array1.length;i++){
+            c[i]=array1[i];
+        }
+        for(int i=0;i<array2.length;i++){
+            c[i+array2.length]=array2[i];
+        }
+//        Log.i(TAG,"c[]:"+Arrays.toString(c));
+        return c;
+    }
+
+    /**
      * 返回SvStatusArrays 类：7个数组
      * @param result []String，原始数组
      * @return SvStatusArrays类

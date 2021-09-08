@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.myapplication.io.StringUtils;
 
 import java.nio.IntBuffer;
 import java.util.Arrays;
@@ -29,11 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
             }//end onclick
         });//end button
-        String []s1=null;
-        String []s2=null;
-        String []s3=getStringArraysSumImprove(s1,s2);
-        if(s3==null) Log.i(TAG,"s3 is null");
-        else Log.i(TAG,"s3:"+Arrays.toString(s3));
+        String[] str = {"$GPGSV","028","09"};
+        String sb = StringUtils.getString(str);
+        Log.i(TAG,"sb:"+sb.toString());
     }//end oncreate
 
 

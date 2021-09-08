@@ -2,11 +2,11 @@ package com.example.myapplication.io;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * 字符串工具类，2021.9.5  Sunday
@@ -14,12 +14,27 @@ import java.util.List;
 public class StringUtils {
     private static final String TAG="StringUtils:xwg";
 
+    /**
+     * 2021.9.8 Wednsday
+     * 字符串数组转成字符串变量：[a,b,c]->{a,b,c}
+     * @param str   原数组
+     * @return String 字符串
+     */
+    @NonNull
+    public static String getString(String[] str) {
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < str.length; i++){
+            sb.append(str[i]);
+            if(i<str.length-1) sb.append(",");
+        }
+        return sb.toString();
+    }
 
     /**
-     * 合并两个float数组
-     * @param a float[]
-     * @param b float[]
-     * @return float[]
+     * 合并两个String数组
+     * @param a String[]
+     * @param b String[]
+     * @return String[]
      */
     public static String[] getStringArraysSumImprove(String a[],String b[]) {
         if(a==null&&b!=null) return b;

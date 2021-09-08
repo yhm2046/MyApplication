@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
             }//end onclick
         });//end button
-        String[] str = {"$GPGSV","028","09"};
-        String sb = StringUtils.getString(str);
-        Log.i(TAG,"sb:"+sb.toString());
+        String s="1";
+        String s2="11";
+        StringUtils.isEqual(s,s2);
     }//end oncreate
 
 

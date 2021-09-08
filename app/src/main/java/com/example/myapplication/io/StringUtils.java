@@ -15,6 +15,17 @@ public class StringUtils {
     private static final String TAG="StringUtils:xwg";
 
     /**
+     * 三种方法判断两个字符串是否相等
+     * @param a String
+     * @param b String
+     */
+    public static void isEqual(String a,String b){
+        Log.i(TAG,a+"=="+b+":"+(a==b)); //相等true，否则false
+        Log.i(TAG,a+"equals("+b+"):"+(a.equals(b)));//相等true，否则false
+        Log.i(TAG,a+".indexOf("+b+"):"+(a.indexOf(b)));//相等0，否则-1
+    }
+
+    /**
      * 2021.9.8 Wednsday
      * 字符串数组转成字符串变量：[a,b,c]->{a,b,c}
      * @param str   原数组

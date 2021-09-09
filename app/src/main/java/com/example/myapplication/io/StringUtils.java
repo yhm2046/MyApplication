@@ -7,6 +7,10 @@ import androidx.annotation.NonNull;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+import static java.io.File.separator;
 
 /**
  * 字符串工具类，2021.9.5  Sunday
@@ -43,9 +47,9 @@ public class StringUtils {
 
     /**
      * 合并两个String数组
-     * @param a String[]
-     * @param b String[]
-     * @return String[]
+     * @param a String[] 可以包含空串“”
+     * @param b String[] 可以包含空串“”
+     * @return String[] 可以包含空串“”
      */
     public static String[] getStringArraysSumImprove(String a[],String b[]) {
         if(a==null&&b!=null) return b;
@@ -110,9 +114,30 @@ public class StringUtils {
 //        Log.i(TAG,"c[]:"+Arrays.toString(c));
         return c;
     }
+    public static SvStatusArrays getGSV(String []result){
 
+
+/*
+* 伪代码
+* 按照$gpgsv分割字符串数组
+* for循环获取卫星类的每个数据
+* 返回卫星类
+* */
+        SvStatusArrays svStatusArrays=null;
+        int b[]=null;
+        int b1[]=null;
+        int b2[]=null;
+        float c[]=null;
+        float d[]=null;
+        float e[]=null;
+        float f[]=null;
+        for(int i=0;i<result.length;i++){
+            if(result[i].equals("")){}
+        }
+        return null;
+    }
     /**
-     * 返回SvStatusArrays 类：7个数组
+     * 解析gsv数据返回SvStatusArrays 类：7个数组,
      * @param result []String，原始数组
      * @return SvStatusArrays类
      */
@@ -128,13 +153,13 @@ public class StringUtils {
         if(result.length<=8) Log.i(TAG,"no date");
         else{
             int count= (result.length-8)/4; //卫星数目
-            b=new int[count];   //记得先要初始化分配内存空间
-            b1=new int[count];
-            b2=new int[count];
-            c=new float[count];
-            d=new float[count];
-            e=new float[count];
-            f=new float[count];
+            b=new int[count];   //卫星号
+            b1=new int[count];      //卫星类型
+            b2=new int[count];      //可用卫星
+            c=new float[count];     //性噪比
+            d=new float[count];     //卫星高度
+            e=new float[count];     //方位角
+            f=new float[count];     //载波频率
             for(int i=8,j=0;i<result.length;i+=4,j++){
                 Log.i(TAG,"id:"+result[i]);
                 b[j]=Integer.valueOf(result[i]).intValue();
@@ -167,7 +192,7 @@ public class StringUtils {
      * str="$PQGSV,4,1,16,01,45,122,38,02,47,237,32,03,63,188,32,09,56,248,25*64";
      * 转成[$PQGSV, 4, 1, 16, 01, 45, 122, 38, 02, 47, 237, 32, 03, 63, 188, 32, 09, 56, 248, 25]
      * @param source String 原始字符串
-     * @return  String[] 目标数组
+     * @return  String[] 目标数组,可以包含空串“”
      */
     public static String[] splitArrays(String source){
         String[] str1 = source.split(",");

@@ -7,4 +7,5 @@ package com.example.myapplication.broadcast;
 public class ConstantGPS {
     public static final String ACTION_GPS1="com.abc";
     public static final String ACTION_GPS2="com.xyz";
+
 }

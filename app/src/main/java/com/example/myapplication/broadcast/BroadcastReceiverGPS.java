@@ -1,9 +1,13 @@
 package com.example.myapplication.broadcast;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.example.myapplication.io.SvStatus;
+import com.example.myapplication.io.Test1;
 
 /**
  * date:2021.9.3    Friday
@@ -21,8 +25,13 @@ public class BroadcastReceiverGPS extends BroadcastReceiver {
                 Log.i(TAG,"reciver the abc...");
                 break;
             case ACTION2:
-                Log.i(TAG,"reciver the xyz...");
-                break;
+                Log.i(TAG,"reciver the X...");
+//                String aa=intent.getStringExtra("aa");
+                Test1 test1= (Test1)(intent.getSerializableExtra("test"));
+                Log.i(TAG,"test1:"+test1.getA());
+                SvStatus svStatus= (SvStatus) (intent.getSerializableExtra("sv"));
+                 Log.i(TAG,"sv:"+svStatus.getC());
+                    break;
             default:
         }
     }

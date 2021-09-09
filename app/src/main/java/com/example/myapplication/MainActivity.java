@@ -32,9 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
             }//end onclick
         });//end button
-        String s="1";
+        String s="$GPGSV, 2, 1, 05, 10, 25, 172, 41, 26, 61, 219, 47, 29, 19, 085, 36, 32, 59, 077, 36, ," +
+                "$GPGSV, 2, 2, 05, 31, 50, 341";
         String s2="11";
-        StringUtils.isEqual(s,s2);
+        String []a={"1","","3"};
+        String []b={"7","8",""};
+        String []tmp=StringUtils.getStringArraysSumImprove(a,b);
+        Log.i(TAG,"abc len:"+"abc".length());
+        Log.i(TAG,"[]tmp:"+Arrays.toString(tmp));
     }//end oncreate
 
 

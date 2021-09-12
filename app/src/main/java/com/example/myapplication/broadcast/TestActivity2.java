@@ -5,6 +5,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +13,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.io.StringUtils;
 import com.example.myapplication.io.SvStatus;
+import com.example.myapplication.io.SvStatusArrays;
 import com.example.myapplication.io.Test1;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * date:2021.9.3    Friday
@@ -34,7 +39,7 @@ public class TestActivity2 extends AppCompatActivity {
         setContentView(R.layout.layout_broadcast);
         Log.i(TAG,"动态广播--------------");
         intentFilter=new IntentFilter();
-        intentFilter.addAction(ConstantGPS.ACTION_GPS2);
+        intentFilter.addAction("com.adan.gps");
         broadcastGPS=new BroadcastReceiverGPS();
         registerReceiver(broadcastGPS,intentFilter);
 
@@ -46,33 +51,53 @@ public class TestActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"send broadcast...");
-                Intent intent=new Intent(TestActivity2.this,
-                        BroadcastReceiverGPS.class);
-                intent.setAction("com.xyz");
-//                传输对象测试
-//                SvStatus svStatus=new SvStatus(1,
-//                        1,
-//                        1,
-//                        1.0f,
-//                        1.0f,
-//                        1.0f,
-//                        1.0f);
-                SvStatus svStatus=new SvStatus();
-                svStatus.setB(1);
-                svStatus.setB1(1);
-                svStatus.setB2(1);
-                svStatus.setC(1f);
-                svStatus.setD(1f);
-                svStatus.setE(1f);
-                svStatus.setF(1f);
-                intent.putExtra("sv",svStatus);
-                Test1 test1=new Test1(1,"2");
-                intent.putExtra("test",  test1);
-//                intent.putExtra("aa","aa");
+//                Intent intent=new Intent(TestActivity2.this,
+//                        BroadcastReceiverGPS.class);
+//                intent.setAction("com.xyz");
+//                SvStatus svStatus=new SvStatus();
+//                svStatus.setB(1);
+//                svStatus.setB1(1);
+//                svStatus.setB2(1);
+//                svStatus.setC(1f);
+//                svStatus.setD(1f);
+//                svStatus.setE(1f);
+//                svStatus.setF(1f);
+                SvStatusArrays svStatusArrays=new SvStatusArrays();
+                svStatusArrays.setB(new int[]{1});
+                svStatusArrays.setB1(new int[]{1});
+                svStatusArrays.setB2(new int[]{1});
+                svStatusArrays.setC(new float[]{1});
+                svStatusArrays.setD(new float[]{1});
+                svStatusArrays.setE(new float[]{1});
+                svStatusArrays.setF(new float[]{1});
+//                intent.putExtra("sv",svStatus);
+//                Test1 test1=new Test1(1,"2");
+//                intent.putExtra("test",  test1);
+////                intent.putExtra("aa","aa");
+                Intent intent=new Intent("com.adan.gps");
+//                intent.putExtra("sv",svStatusArrays);
+                /**
+                 * 参考：
+                 * Bundle bundle = intent.getExtras();
+                 * bundle.setClassLoader(BFWCNetWorkType.class.getClassLoader());
+                 * networkType =(BFWCNetWorkType)bundle.getSerializable("status");
+                 * BFWCNetWorkUtil.setCurrentNetworkType(networkType);
+                 *
+                 */
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("sv",  svStatusArrays);
+                intent.putExtra("data",bundle);
                 sendBroadcast(intent);
 
             }
-        });
+        });//onbtn
+        double []pins = {9,3,7,2};
+        float []copy2 = new float[pins.length];
+        for(int i=0;i<pins.length;i++) copy2[i]=(float ) pins[i];
+//        Log.i(TAG,"copy2:"+Arrays.toString(copy2));
+        SvStatusArrays sv=new SvStatusArrays();
+        int i=sv.getSvCount();
+
     }//onCreate
 
     @Override

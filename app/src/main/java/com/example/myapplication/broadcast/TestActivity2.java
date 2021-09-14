@@ -16,6 +16,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.io.StringUtils;
 import com.example.myapplication.io.SvStatus;
 import com.example.myapplication.io.SvStatusArrays;
+import com.example.myapplication.io.SvStatusArrays2;
 import com.example.myapplication.io.Test1;
 
 import java.io.Serializable;
@@ -62,7 +63,7 @@ public class TestActivity2 extends AppCompatActivity {
 //                svStatus.setD(1f);
 //                svStatus.setE(1f);
 //                svStatus.setF(1f);
-                SvStatusArrays svStatusArrays=new SvStatusArrays();
+                SvStatusArrays2 svStatusArrays=new SvStatusArrays2();
                 svStatusArrays.setB(new int[]{1});
                 svStatusArrays.setB1(new int[]{1});
                 svStatusArrays.setB2(new int[]{1});
@@ -85,7 +86,7 @@ public class TestActivity2 extends AppCompatActivity {
                  *
                  */
                 Bundle bundle=new Bundle();
-                bundle.putParcelable("sv",  svStatusArrays);
+                bundle.putSerializable("sv",  svStatusArrays);
                 intent.putExtra("data",bundle);
                 sendBroadcast(intent);
 
